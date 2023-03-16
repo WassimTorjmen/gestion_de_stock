@@ -1,0 +1,98 @@
+.flex-container {
+    display: flex;
+    flex-direction:column;
+  }
+  input.date{margin: 15px;}
+.flex-container-row{
+    margin-top: 50px;
+    margin-left: 800px;
+    margin-bottom: 10px;
+    display: flex;
+  flex-direction: row; 
+  }
+.flex-container-rows{
+    margin-top: 10px;
+    margin-left: 100px;
+    display: flex;
+    flex-direction: row; 
+  }
+.flex-item-left {
+    margin-left: 10px;
+    flex: 50%;
+  }
+.flex-item-right {
+    margin-left: 200px;
+    flex: 50%;
+  }
+  @media (max-width: 800px) {
+    .flex-item-right, .flex-item-left {
+      flex: 100%;
+    }
+}
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 20px;
+   /* Should be removed. Only for demonstration */
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+ 
+}
+.row{
+  padding-left: 100px;
+ 
+}
+
+.button-44 {
+  margin-left :30%;
+  background: red;
+  border-radius: 11px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  font-family: Mija,-apple-system,BlinkMacSystemFont,Roboto,"Roboto Slab","Droid Serif","Segoe UI",system-ui,Arial,sans-serif;
+  font-size: 1.15em;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 33.4929px;
+  padding: .8em 1em;
+  text-align: left;
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+  text-shadow: rgba(0, 0, 0, .3) 1px 1px 1px;
+  text-underline-offset: 1px;
+  transition: all .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 25%;
+  word-break: break-word;
+  border: 0;
+}
+
+
+.button-44:focus {
+  border-bottom-style: none;
+  border-color: #dadada;
+  box-shadow: rgba(0, 0, 0, .3) 0 3px 3px inset;
+  outline: 0;
+}
+
+.button-44:hover {
+  border-bottom-style: none;
+  border-color: #dadada;
+}
+
+
+#fermer-butt{
+  color:white;
+  background-color: red;
+}

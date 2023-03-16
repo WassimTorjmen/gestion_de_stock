@@ -1,0 +1,64 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-container-row {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-item-left {
+
+  flex: 50%;
+}
+
+.canvas {
+  padding-left: 20px;
+
+}
+
+@media (max-width: 800px) {
+
+  .flex-item-right,
+  .flex-item-left {
+    flex: 100%;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.canvas {
+  padding-top: 25px;
+}
+
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: red !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: red !important;
+}

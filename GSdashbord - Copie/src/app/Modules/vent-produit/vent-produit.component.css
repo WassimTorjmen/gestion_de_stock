@@ -1,0 +1,43 @@
+.flex-container {
+    display: flex;
+    flex-direction:column;
+  }
+  .flex-container-row{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    display: flex;
+  flex-direction: row; 
+  }
+.flex-item-left {
+  
+    flex: 50%;
+  }
+.canvas{
+  padding-left: 10px;
+
+}
+
+  @media (max-width: 800px) {
+    .flex-item-right, .flex-item-left {
+      flex: 100%;
+    }
+}
+
+
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 40%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.canvas{
+  padding-top: 20px;
+}

@@ -1,0 +1,11 @@
+ul li {
+    list-style: none;
+  }
+  .mat-toolbar.mat-primary {
+    background: #ff0000;
+    color: #fff;
+  
+  }
+  img{
+    width:20%;
+  }

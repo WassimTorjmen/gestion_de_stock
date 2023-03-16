@@ -1,0 +1,49 @@
+.flex-container {
+    display: flex;
+    flex-direction:column;
+  }
+  .flex-container-row{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    display: flex;
+  flex-direction: row; 
+  }
+.flex-item-left {
+  
+    flex: 50%;
+  }
+.canvas{
+  padding-left: 10px;
+
+}
+
+  @media (max-width: 800px) {
+    .flex-item-right, .flex-item-left {
+      flex: 100%;
+    }
+}
+* {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 50px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.canvas{
+  padding-top: 20px;
+}

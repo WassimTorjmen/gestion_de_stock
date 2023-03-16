@@ -1,0 +1,48 @@
+<div class="container" fxLayoutGap="5px">
+    <div fxFlex="100">
+      <div>
+        <h3 class="titre"> TAUX DE DISTRIBUTION D'UN PRODUIT SELON LA SOURCE</h3>
+            <div class="row">
+              <div class="column" >
+                <form class="example-form">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Source</mat-label>
+                    <input class="champ" type="text"
+                      matInput
+                           [formControl]="myControlsource"
+                           [matAutocomplete]="auto"  #selectedsource>
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                      <mat-option *ngFor="let option of filteredsource | async" [value]="option"  >
+                        {{option}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+              </form>
+              </div>
+            
+              <div class="column" >
+                <form class="example-form">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Smartphone type</mat-label>
+                    <input class="champ" type="text"
+                      matInput
+                           [formControl]=" myControlprod"
+                           [matAutocomplete]="autoo"   #selectedrpd>
+                    <mat-autocomplete autoActiveFirstOption #autoo="matAutocomplete">
+                      <mat-option *ngFor="let prod of filteredprods | async" [value]="prod"  >
+                        {{prod}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+              </form>
+              </div>
+            </div>
+         </div>
+        
+     <div  class="canvas">
+        <canvas baseChart [data]="lineChartData" [labels]="lineChartLabels" [chartType]="lineChartType"
+            [options]="lineChartOptions"   (click)="selectChangeHandlersource(selectedrpd.value,selectedsource.value)" >
+            </canvas>
+     </div>
+    </div>
+  </div>
