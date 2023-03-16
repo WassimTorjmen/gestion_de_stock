@@ -1,0 +1,26 @@
+<div fxLayoutGap="5px">
+  <div fxFlex="100">
+       <div>
+        <h3> DISTRIBUTION DES PRODUIT PAR REGION </h3>
+        <form class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Region</mat-label>
+              <input class="champ" type="text"
+                matInput
+                     [formControl]="myControl"
+                     [matAutocomplete]="auto" >
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option"  (onSelectionChange)="onSelFunc(option)">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+        </form>
+      </div>
+      <div class="canvas">
+          <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+                  [options]="doughnutChartOptions" [colors]="doughnutChartColor">
+            </canvas>
+      </div>
+  </div>
+</div>

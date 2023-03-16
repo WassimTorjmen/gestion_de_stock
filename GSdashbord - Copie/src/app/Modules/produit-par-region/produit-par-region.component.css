@@ -1,0 +1,23 @@
+.flex-container {
+    display: flex;
+    flex-direction:column;
+  }
+  .flex-container-row{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    display: flex;
+  flex-direction: row; 
+  }
+.flex-item-left {
+  
+    flex: 50%;
+  }
+.canvas{
+  padding-left: 10px;
+}
+
+  @media (max-width: 800px) {
+    .flex-item-right, .flex-item-left {
+      flex: 100%;
+    }
+}

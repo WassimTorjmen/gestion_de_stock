@@ -1,0 +1,63 @@
+<div fxLayoutGap="5px">
+  <div fxFlex="100">
+    <div>
+      <h3> LES ETATS D'UN PRODUIT DANS UNE BOUTIQUE </h3>
+          <div class="row">
+            <div class="column m-50" >
+              <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Ville</mat-label>
+                  <input class="champ" type="text"
+                    matInput
+                         [formControl]="myControlville"
+                         [matAutocomplete]="auto"  #selectedville>
+                  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredvilles | async" [value]="option"  (onSelectionChange)="selectville(option)">
+                      {{option}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+            </form>
+            </div>
+            <div class="column" >
+              <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Boutique</mat-label>
+                  <input class="champ" type="text"
+                    matInput
+                         [formControl]="myControldists"
+                         [matAutocomplete]="autooo" #selectednomdist >
+                  <mat-autocomplete autoActiveFirstOption #autooo="matAutocomplete">
+                    <mat-option *ngFor="let dist of filtereddists | async" [value]="dist"  >
+                      {{dist}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+            </form>
+            </div>
+            <div class="column" >
+              <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Produit</mat-label>
+                  <input class="champ" type="text"
+                    matInput
+                         [formControl]=" myControlprod"
+                         [matAutocomplete]="autoo"   #selectedrpd>
+                  <mat-autocomplete autoActiveFirstOption #autoo="matAutocomplete">
+                    <mat-option *ngFor="let prod of filteredprods | async" [value]="prod"  >
+                      {{prod}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+            </form>
+            </div>
+          </div>
+       </div>
+      
+   <div  class="canvas">
+       <canvas baseChart [data]="barChartData" [labels]="barChartLabels" [chartType]="barChartType"
+        [options]="barChartOptions" [colors]="barChartColor" (click)="selectChangeHandlerprod(selectedrpd.value,selectedville.value,selectednomdist.value)" >
+      </canvas>
+   </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div fxLayoutGap="5px">
+    <div fxFlex="100">
+         <div>
+          <h3> TOP 5 BOUTIQUES AYANT UN PRODUIT VENDU </h3>
+          <form class="example-form">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Smartphone Type</mat-label>
+                <input class="champ" type="text"
+                  matInput
+                       [formControl]="myControl"
+                       [matAutocomplete]="auto" >
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option"  (onSelectionChange)="onSelFunc(option)">
+                    {{option}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+          </form>
+        </div>
+        <div class="canvas">
+           
+ <canvas baseChart [data]="doughnut2ChartData" [labels]="doughnut2ChartLabels" [chartType]="doughnut2ChartType"
+ [options]="doughnut2ChartOptions" [colors]="doughnut2ChartColor">
+ </canvas>
+        </div> 
+    </div>
+  </div>
+  
+   
