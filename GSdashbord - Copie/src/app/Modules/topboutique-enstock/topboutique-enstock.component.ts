@@ -35,7 +35,7 @@ export class TopboutiqueEnstockComponent implements OnInit {
   constructor(private dashboardService: DashboardService, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
-    let responsestock = this.dashboardService.enstock("PORTABLE OPPO A55 (4+128G)").subscribe(
+    let responsestock = this.dashboardService.enstock("produit").subscribe(
       (d) => {
         // console.log(d);
         d.forEach((typeCount: Model1) => {
@@ -64,10 +64,11 @@ export class TopboutiqueEnstockComponent implements OnInit {
   }
   onSelFunc(option: any) {
 
-    this.doughnut2ChartData = [];
-    this.doughnut2ChartLabels = [];
     let response = this.dashboardService.enstock(option).subscribe(
       (d) => {
+        this.doughnut2ChartData = [];
+        this.doughnut2ChartLabels = [];
+
         // console.log(d);
         d.forEach((typeCount: Model1) => {
           this.doughnut2ChartData.push(typeCount.count);

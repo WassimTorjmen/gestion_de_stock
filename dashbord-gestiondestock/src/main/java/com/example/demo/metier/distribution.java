@@ -1,67 +1,32 @@
 package com.example.demo.metier;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.nio.charset.StandardCharsets;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.TimeZone;
 import java.util.stream.Collectors;
 import freemarker.template.Configuration;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.DistributeurRep;
-import com.example.demo.model.DisAdrr;
-import com.example.demo.model.distributionTotal;
-import com.example.demo.model.produithorsstock;
-import com.example.demo.model.Distributeur;
-import com.example.demo.model.Qtemax_min;
-import com.example.demo.model.desetat;
+import com.example.demo.dto.DisAdrr;
+import com.example.demo.dto.distributionTotal;
+import com.example.demo.dto.Qtemax_min;
+import com.example.demo.dto.desetat;
+import com.example.demo.dto.venteParDist;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-
-
-import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Service;
-import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import net.sf.jasperreports.engine.JRException;
 
 @Service
@@ -69,11 +34,11 @@ public class distribution {
 	   @Autowired
 	   public JavaMailSender emailSender;
 	   @Autowired
-		private DistributeurRep  disQ ;
+		private DistributeurRep  disRep ;
 	   @Autowired
 			private mailservice mails ;
 	  public List<Object> finddis(String adresse) throws JsonProcessingException {
-		  List<Object[]> result =disQ.query(adresse);
+		  List<Object[]> result =disRep.RegionDist(adresse);
 		  List<Object> resultList = result.stream()
 			    .map(x -> {
 
@@ -84,12 +49,13 @@ public class distribution {
 			        return data;
 			    })
 			    .collect(Collectors.toList());
+		  System.out.println(resultList);
 		return resultList ;
 		 
    
 	    }
 	  public List<Object> etatsproduit(String proddes ,String ville ,String nomdist) {
-		  List<Object[]> result =disQ.etatsproduit(proddes,ville,nomdist);
+		  List<Object[]> result =disRep.etatsproduit(proddes,ville,nomdist);
 		  List<Object> resultList = result.stream()
 			    .map(x -> {
 
@@ -105,7 +71,7 @@ public class distribution {
 	    }
 	  
 	 public List<Object> enstock(String prod) {
-		  List<Object[]> result =disQ.enstock(prod);
+		  List<Object[]> result =disRep.enstock(prod);
 		  List<Object> resultList = result.stream()
 			    .map(x -> {
 
@@ -124,7 +90,7 @@ public class distribution {
 	  
 	  public List<Object> vendu(String prod) {
 		  
-		  List<Object[]> result =disQ.vendu(prod);
+		  List<Object[]> result =disRep.vendu(prod);
 		  List<Object> resultList = result.stream()
 			    .map(x -> {
 
@@ -143,7 +109,7 @@ public class distribution {
 		  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		  //Date convertedCurrentDate = sdf.parse(date1);
 		  //Date convertedCurrentDate2 = sdf.parse(date2);
-		  List<Object[]> result =disQ.distribution();
+		  List<Object[]> result =disRep.distribution();
 		  List<Object> resultList = result.stream()
 			    .map(x -> {
 
@@ -168,7 +134,7 @@ public class distribution {
 		  Date convertedCurrentDate2 = sdf.parse(date2);
 		
 		  System.out.print( convertedCurrentDate2);
-		  List<Object[]> result =disQ.distributiontotal(prod ,source,convertedCurrentDate,convertedCurrentDate2);
+		  List<Object[]> result =disRep.distributiontotal(prod ,source,convertedCurrentDate,convertedCurrentDate2);
 		  System.out.print(result);
 
 		  List<Object> resultList = result.stream()
@@ -206,7 +172,7 @@ public class distribution {
 		  
 	 
 //	Sytem.out.print(date_1+""+date_2);
-		  List<Object[]> result =disQ.ventpardate(prod ,source,convertedCurrentDate,convertedCurrentDate2);
+		  List<Object[]> result =disRep.ventpardate(prod ,source,convertedCurrentDate,convertedCurrentDate2);
 		  
 		  List<Object> resultList = result.stream()
 			    .map(x -> {
@@ -258,7 +224,7 @@ public class distribution {
 	  }
 	  
 	  public List<Object> qtemax()  {
-		  List<Object[]> result =disQ.qtemax();
+		  List<Object[]> result =disRep.qtemax();
 		  System.out.print(result );
 		  List<Object> resultList = result.stream()
 			    .map(x -> {
@@ -280,7 +246,7 @@ public class distribution {
 		 
 	    }
 	  public List<Object> qtemin()  {
-		  List<Object[]> result =disQ.qtemin();
+		  List<Object[]> result =disRep.qtemin();
 		  System.out.print(result );
 		  List<Object> resultList = result.stream()
 			    .map(x -> {
@@ -297,8 +263,22 @@ public class distribution {
 			    .collect(Collectors.toList());
 		  //System.out.print(resultList);
 		  return resultList ;
-
-		
-		 
 	    }
+public List<Object>venteParDist(){
+		  List<Object[]>result=disRep.ventepardist();
+		  List<Object> resultList = result.stream()
+				  .map(x->{
+					venteParDist data=new venteParDist();
+					data.destination=(String) x[0];
+					data.nom_produit=(String) x[1];
+					data.cod_prod=(String) x[2];
+					data.last_delivary_date=(Date) x[3];
+					data.last_sell_date=(Date) x[4];
+					data.derniere_qte_livrée=(Integer) x[5];
+					return data;
+				  })
+				  .collect(Collectors.toList());
+		  return resultList;
+}
+
 }

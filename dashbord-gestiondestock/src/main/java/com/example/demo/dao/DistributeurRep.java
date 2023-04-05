@@ -33,8 +33,8 @@ public interface DistributeurRep  extends JpaRepository<Distributeur,String>{
 	List<String>  listeproddes();
 
 	//distribution par region
-	@Query(value = "select count(*) as count , p.des_prod  as libelle from produit p , kit_pack k ,distributeur d WHERE p.cod_prod = k.cod_prod and k.cod_dist=d.cd_dist and adresse =:adresse group by p.des_prod ", nativeQuery = true)
-	List<Object[]>  query(@Param("adresse") String adresse); 
+	@Query(value = "select count(*) as count , p.des_prod  as libelle from produit p , kit_pack k ,distributeur d WHERE p.cod_prod = k.cod_prod and k.cod_dist=d.cd_dist and adresse =:adresse group by p.des_prod order by 1 desc ", nativeQuery = true)
+	List<Object[]>  RegionDist(@Param("adresse") String adresse);
 	
 	@Query(value = "select count(e.libelle),e.libelle from kit_pack k , etat_kit e  , distributeur d  where etat_kit=e.code_etat and cod_prod =(select cod_prod  from produit where des_prod=:proddes ) and k.cod_dist=d.cd_dist and  d.ville =:ville and d.nom_dist=:nomdist group  by etat_kit , e.libelle , d.nom_dist", nativeQuery = true)
 	List<Object[]>  etatsproduit(@Param("proddes") String proddes,@Param("ville") String ville,@Param("nomdist") String nomdist); 
@@ -48,7 +48,7 @@ public interface DistributeurRep  extends JpaRepository<Distributeur,String>{
 	List<Object[]> vendu(@Param("prod") String prod);
 
 	/*distribution par source et produit */
-	@Query(value = "select qte_prod  ,nom_dist ,l.dat_crea from livraison_en_cours l , distributeur d where l.destination=d.cd_dist and cod_prod=(select cod_prod  from produit where des_prod='PORTABLE OPPO A55 (4+128G)' ) and l.source='LAC' ", nativeQuery = true)
+	@Query(value = "select qte_prod  ,nom_dist ,l.dat_crea from livraison_en_cours l , distributeur d where l.destination=d.cd_dist and cod_prod=(select cod_prod  from produit where des_prod='DV_ Nokia C12' ) and l.source='BEN' ", nativeQuery = true)
 	List<Object[]> distribution ();
 	//	List<Object[]> distribution (@Param("prodes") String prod , @Param("source") String source);
 
@@ -77,4 +77,9 @@ public interface DistributeurRep  extends JpaRepository<Distributeur,String>{
 		/***taux de distribution des produits selon boutique **/
 		/*@Query(value ="select sum(CAST(qte_prod AS NUMERIC)) , cod_prod from livraison_en_cours  where destination=(select cd_dist from distributeur where nom_dist=:boutique)and dat_crea>=:date1 and dat_crea<=:date2 group by destination,cod_prod ", nativeQuery = true)
 		List<Object[]>qtemin();*/
+
+
+	/*  affichage des distributeur ayant un probleme de sortie (vente) d'un produit */
+	@Query(value = "select l.destination, p.des_prod,p.cod_prod, max (l.dat_crea) last_delivery_date, max(k.dat_vent)last_sell_date, qte_prod somme_qty FROM  livraison_en_cours l, produit p,kit_pack k WHERE  l.cod_prod = P.cod_prod and k.cod_prod=l.cod_prod and l.destination=k.cod_dist and (DATE_PART('day',k.dat_vent-l.dat_crea)<15) GROUP BY   destination, p.des_prod,qte_prod,p.cod_prod order by 6 desc",nativeQuery = true)
+	List<Object[]>ventepardist();
 }

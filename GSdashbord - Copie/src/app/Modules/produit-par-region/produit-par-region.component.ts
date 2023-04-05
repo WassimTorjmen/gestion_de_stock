@@ -39,7 +39,7 @@ export class ProduitParRegionComponent implements OnInit {
   constructor(private dashboardService: DashboardService, private datePipe: DatePipe) { }
 
   ngOnInit() {
-    let responses = this.dashboardService.pieChart("TUNIS").subscribe(
+    let responses = this.dashboardService.pieChart("produit").subscribe(
       (d) => {
         // console.log(d);
         d.forEach((typeCount: Model1) => {
@@ -70,11 +70,12 @@ export class ProduitParRegionComponent implements OnInit {
   }
 
   onSelFunc(option: any) {
-    this.doughnutChartData = [];
-    this.doughnutChartLabels = [];
     let response = this.dashboardService.pieChart(option).subscribe(
       (d) => {
         // console.log(d);
+        this.doughnutChartData = [];
+        this.doughnutChartLabels = [];
+
         d.forEach((typeCount: Model1) => {
 
           this.doughnutChartData.push(typeCount.count);

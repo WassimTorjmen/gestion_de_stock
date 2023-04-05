@@ -1,28 +1,20 @@
 package com.example.demo.controller;
 
-import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dao.DistributeurRep;
 import com.example.demo.metier.distribution;
-import com.example.demo.metier.mailservice;
-import com.example.demo.model.Distributeur;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import net.sf.jasperreports.engine.JRException;
 
 @RestController
 @RequestMapping("/distri")
@@ -92,11 +84,11 @@ public class DistributionController {
 	    
 	    @GetMapping("/distribution")
 	    public List<Object> distribution() throws UnsupportedEncodingException, ParseException{
-	    	String prod ="PORTABLE OPPO A55 (4+128G)";
+	    	/*String prod ="DV_ Nokia C12";
 	    	String source="BEN";
 	    	String date1="02-02-2022";
 	    	String date2="02-04-2022";
-	    String prodd = java.net.URLDecoder.decode(prod, "UTF-8");
+	    String prodd = java.net.URLDecoder.decode(prod, "UTF-8");*/
 	    	 return dis.distribution();
 	 }
 
@@ -120,6 +112,9 @@ public class DistributionController {
 	    @GetMapping("/qteMin")
 	    public List<Object> qtemin() {
 			return dis.qtemin();
-	    	
 	    }
+		@GetMapping("/venteParDist")
+		public List<Object> venteParDist(){
+		 return dis.venteParDist();
+		}
 }

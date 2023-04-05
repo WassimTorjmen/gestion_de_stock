@@ -64,11 +64,11 @@ export class TopboutiqueVenduComponent implements OnInit {
     return this.prod.filter(option => option.toLowerCase().includes(filterValue));
   }
   onSelFunc(option: any) {
-    this.doughnut2ChartData = [];
-    this.doughnut2ChartLabels = [];
     let response = this.dashboardService.vendu(option).subscribe(
       (d) => {
         // console.log(d);
+        this.doughnut2ChartData = [];
+        this.doughnut2ChartLabels = [];
         d.forEach((typeCount: Model1) => {
           this.doughnut2ChartData.push(typeCount.count);
           this.doughnut2ChartLabels.push(typeCount.libelle);
@@ -79,4 +79,5 @@ export class TopboutiqueVenduComponent implements OnInit {
       }
     );
   }
+
 }

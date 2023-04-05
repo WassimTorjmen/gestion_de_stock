@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
 import com.example.demo.dao.DistributeurRep;
-import com.example.demo.model.produithorsstock;
+import com.example.demo.dto.produithorsstock;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;

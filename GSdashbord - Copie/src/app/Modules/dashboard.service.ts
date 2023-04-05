@@ -20,13 +20,14 @@ export class DashboardService {
   distributionTotal(prod: string, source: string, date1: string, date2: string) {
     prod = `${encodeURIComponent(prod)}`
     let queryParams = new HttpParams();
-    console.log(date1);
+    /*console.log(date1);*/
     queryParams = queryParams.append("prod", prod);
     queryParams = queryParams.append("source", source);
     queryParams = queryParams.append("date1", date1);
     queryParams = queryParams.append("date2", date2);
     return this.http.get<Array<Model1>>("http://localhost:8080/distri/distributiontotal", { params: queryParams })
-      .pipe(map((d: Array<Model1>) => d));
+      .pipe(map((d: Array<Model1>) => d)
+      );
   }
   adresse() {
     return this.http.get<string[]>("http://localhost:8080/distri/adresse");
