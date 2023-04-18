@@ -3,6 +3,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Model1 } from '../interfaces/model-1';
 import { map, Observable } from 'rxjs';
 import { QteminMax } from '../interfaces/qtemin-max';
+import { venteParDist } from '../interfaces/vente-pardist';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -92,4 +94,11 @@ export class DashboardService {
     return this.http.get<Array<Model1>>("http://localhost:8080/distri/ventpardate", { params: queryParams })
       .pipe(map((d: Array<Model1>) => d));
   }
+  venteParDist() {
+    return this.http.get<Array<venteParDist>>("http://localhost:8080/distri/venteParDist")
+      .pipe(map((d: Array<venteParDist>) => d));;
+
+
+  }
+
 }

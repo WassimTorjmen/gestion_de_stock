@@ -19,16 +19,16 @@ export class DashbordchartsComponent implements OnInit {
   ngOnInit(): void {
     let response = this.dashboardService.qtemax().subscribe(
       (d) => {
-        // console.log(d);
+        
         d.forEach((typeCount: QteminMax) => {
           this.listqtemax.push(typeCount)
-
         });
       },
       (error) => {
         console.error(error);
       }
     );
+
 
     let responses = this.dashboardService.qtemin().subscribe(
       (d) => {

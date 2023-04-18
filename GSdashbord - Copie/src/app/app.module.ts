@@ -33,6 +33,7 @@ import { TopboutiqueVenduComponent } from './Modules/topboutique-vendu/topboutiq
 import { DistrProduitComponent } from './Modules/distr-produit/distr-produit.component';
 import { VentProduitComponent } from './Modules/vent-produit/vent-produit.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { VentePardistComponent } from './Modules/vente-pardist/vente-pardist.component';
 const modules = [
 
   MatFormFieldModule,
@@ -56,6 +57,7 @@ const modules = [
     TopboutiqueVenduComponent,
     DistrProduitComponent,
     VentProduitComponent,
+    VentePardistComponent,
 
   ],
   imports: [

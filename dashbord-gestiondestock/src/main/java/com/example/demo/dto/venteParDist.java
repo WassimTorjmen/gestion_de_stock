@@ -11,9 +11,11 @@ import java.util.Date;
 @AllArgsConstructor
 public class venteParDist {
     public String destination;
+    public String adresse;
+    public String nom_dist;
     public String nom_produit;
     public String cod_prod;
-    public Date last_delivary_date;
-    public Date last_sell_date;
-    public Integer derniere_qte_livrée;
+    public String last_delivary_date;
+    public String last_sell_date;
+    public Integer derniere_qte_livree;
 }

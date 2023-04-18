@@ -80,6 +80,6 @@ public interface DistributeurRep  extends JpaRepository<Distributeur,String>{
 
 
 	/*  affichage des distributeur ayant un probleme de sortie (vente) d'un produit */
-	@Query(value = "select l.destination, p.des_prod,p.cod_prod, max (l.dat_crea) last_delivery_date, max(k.dat_vent)last_sell_date, qte_prod somme_qty FROM  livraison_en_cours l, produit p,kit_pack k WHERE  l.cod_prod = P.cod_prod and k.cod_prod=l.cod_prod and l.destination=k.cod_dist and (DATE_PART('day',k.dat_vent-l.dat_crea)<15) GROUP BY   destination, p.des_prod,qte_prod,p.cod_prod order by 6 desc",nativeQuery = true)
+		@Query(value = "select l.destination cod_dist,d.adresse,d.nom_dist, p.des_prod,p.cod_prod, TO_CHAR(max(l.dat_crea), 'DD-MM-yyyy') last_delivery_date,TO_CHAR(max(k.dat_vent),'DD-MM-yyyy') last_sell_date, qte_prod somme_qty FROM  livraison_en_cours l, produit p,kit_pack k , distributeur d WHERE  l.cod_prod = P.cod_prod and k.cod_prod=l.cod_prod and l.destination=k.cod_dist and k.cod_dist=d.cd_dist and (DATE_PART('day',k.dat_vent-l.dat_crea)<15) GROUP BY l.destination,d.adresse, p.des_prod,qte_prod,p.cod_prod,d.nom_dist order by 8 desc",nativeQuery = true)
 	List<Object[]>ventepardist();
 }

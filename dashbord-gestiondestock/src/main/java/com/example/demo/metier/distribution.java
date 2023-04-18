@@ -270,11 +270,13 @@ public List<Object>venteParDist(){
 				  .map(x->{
 					venteParDist data=new venteParDist();
 					data.destination=(String) x[0];
-					data.nom_produit=(String) x[1];
-					data.cod_prod=(String) x[2];
-					data.last_delivary_date=(Date) x[3];
-					data.last_sell_date=(Date) x[4];
-					data.derniere_qte_livrée=(Integer) x[5];
+					data.adresse=(String) x[1];
+					data.nom_dist=(String)x[2];
+					data.nom_produit=(String) x[3];
+					data.cod_prod=(String) x[4];
+					data.last_delivary_date=(String) x[5];
+					data.last_sell_date=(String) x[6];
+					data.derniere_qte_livree=(Integer) x[7];
 					return data;
 				  })
 				  .collect(Collectors.toList());

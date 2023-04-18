@@ -32,7 +32,7 @@ export class DistrProduitComponent implements OnInit {
   public lineChartData: SingleDataSet = [];
   public lineChartType: ChartType = 'line';
   public lineChartColor: Color[] = [
-    { backgroundColor: ['#FF0000', '#ffbf3a', '#4e3dc8', '#CD09F8', '#33B67C', '#33FFDA', '#33D4FF', '#FF33A5', '#042383', '#00FF2E'] },
+    { backgroundColor: ['#FF0000', '#ffbf3a', '#4e3dc8', '#CD09F8', '#33B67C'] },
   ];
 
   constructor(private dashboardService: DashboardService, private datePipe: DatePipe) { }
