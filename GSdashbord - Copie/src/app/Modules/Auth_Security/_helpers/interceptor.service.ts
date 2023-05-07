@@ -1,0 +1,23 @@
+import { Injectable } from '@angular/core';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class InterceptorService implements HttpInterceptor {
+
+  constructor() { }
+  //method to inspect and transform HTTP requests before they are sent to server.
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    req = req.clone({
+      withCredentials: true,
+    });
+    return next.handle(req);
+
+  }
+
+}
+export const httpInterceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+];

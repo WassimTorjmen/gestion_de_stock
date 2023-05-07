@@ -34,6 +34,9 @@ import { DistrProduitComponent } from './Modules/distr-produit/distr-produit.com
 import { VentProduitComponent } from './Modules/vent-produit/vent-produit.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { VentePardistComponent } from './Modules/vente-pardist/vente-pardist.component';
+import { LoginComponent } from './Modules/Auth_Security/login/login.component';
+import { AdminBoardComponent } from './Modules/Auth_Security/admin-board/admin-board.component';
+import { RegisterComponent } from './Modules/Auth_Security/register/register.component';
 const modules = [
 
   MatFormFieldModule,
@@ -58,6 +61,10 @@ const modules = [
     DistrProduitComponent,
     VentProduitComponent,
     VentePardistComponent,
+    LoginComponent,
+    AdminBoardComponent,
+    RegisterComponent,
+
 
   ],
   imports: [
