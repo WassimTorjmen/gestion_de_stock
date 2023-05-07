@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.model.auth;
 
 public enum ERole {
     ROLE_AGENT,

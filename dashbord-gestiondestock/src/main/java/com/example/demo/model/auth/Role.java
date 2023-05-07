@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.model.auth;
 
 import javax.persistence.*;
 
@@ -8,7 +8,7 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @Column(length = 20)
     private ERole name;
 

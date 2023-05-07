@@ -1,6 +1,6 @@
-package com.example.demo.dao;
+package com.example.demo.dao.auth;
 
-import com.example.demo.model.User;
+import com.example.demo.model.auth.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

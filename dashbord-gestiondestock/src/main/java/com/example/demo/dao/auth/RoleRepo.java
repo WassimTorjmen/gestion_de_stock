@@ -1,7 +1,7 @@
-package com.example.demo.dao;
+package com.example.demo.dao.auth;
 
-import com.example.demo.model.ERole;
-import com.example.demo.model.Role;
+import com.example.demo.model.auth.ERole;
+import com.example.demo.model.auth.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
