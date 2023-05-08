@@ -40,6 +40,9 @@ export class AuthService {
   logout(): Observable<any> {
     return this.http.post(AUTH_API + 'signout', {}, httpOptions);
   }
+  getToken(): Observable<String> {
+    return this.http.get(AUTH_API + 'readCookie', { responseType: 'text' });
+  }
 
 
 }

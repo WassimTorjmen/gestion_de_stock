@@ -15,7 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { DashboardService } from 'src/app/Modules/dashboard.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChartsModule, } from "ng2-charts";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -37,6 +37,7 @@ import { VentePardistComponent } from './Modules/vente-pardist/vente-pardist.com
 import { LoginComponent } from './Modules/Auth_Security/login/login.component';
 import { AdminBoardComponent } from './Modules/Auth_Security/admin-board/admin-board.component';
 import { RegisterComponent } from './Modules/Auth_Security/register/register.component';
+import { InterceptorService } from './Modules/Auth_Security/_helpers/interceptor.service';
 const modules = [
 
   MatFormFieldModule,
@@ -90,7 +91,13 @@ const modules = [
   providers:
     [
       DashboardService,
-      DatePipe],
+      DatePipe,
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: InterceptorService,
+        multi: true,
+      }
+    ],
   bootstrap: [AppComponent],
   exports: [modules,
     ChartsModule,
