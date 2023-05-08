@@ -213,10 +213,10 @@ public class distribution {
 		        mimeMessageHelper.setTo("torjmen.wassim@gmail.com");
 		        mimeMessageHelper.setText("ci-joint vous trouvez la liste des produits qui sont en répture de stock par boutique ");
 		        mimeMessageHelper.setSubject("Produit en répture de stock ");
-		        FileSystemResource fileSystem
-		                = new FileSystemResource(new File("Documents\\gestion_de_stock\\email.pdf"));
-		        mimeMessageHelper.addAttachment(fileSystem.getFilename(),
-		                fileSystem);
+		        //FileSystemResource fileSystem
+		                //= new FileSystemResource(new File(""));
+		        //mimeMessageHelper.addAttachment(fileSystem.getFilename(),
+		                //fileSystem);
 		 
 		        emailSender.send(mimeMessage);
 		       

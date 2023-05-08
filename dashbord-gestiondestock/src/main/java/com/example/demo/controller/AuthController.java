@@ -16,11 +16,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.model.auth.ERole;
 import com.example.demo.model.auth.Role;
@@ -92,24 +88,13 @@ public class AuthController {
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
 
-        strRoles.forEach(role -> {
-            switch (role) {
-                case "admin":
-                    Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
-                            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                    roles.add(adminRole);
 
-                    break;
-                case "agent":
                     Role agentRole = roleRepository.findByName(ERole.ROLE_AGENT)
                             .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                     roles.add(agentRole);
 
-                    break;
 
 
-            }
-        });
 
 
         user.setRoles(roles);
@@ -125,6 +110,10 @@ public class AuthController {
         ResponseCookie cookie = jwtUtils.getCleanJwtCookie();
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString())
                 .body(new MessageResponse("You've been signed out!"));
+    }
+    @GetMapping("/readCookie")
+    public String readCookie(@CookieValue(name = "${GestionStock.app.jwtCookieName}") String jwtCookie) {
+        return  jwtCookie.toString();
     }
 
 }
