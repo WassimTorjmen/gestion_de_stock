@@ -4,45 +4,46 @@
   </mat-form-field>
   
   <div class="mat-elevation-z8">
+    <h2>Produits dont leur date de vente dépasse 15 jours à compter la dernière date de livraison</h2>
     <table mat-table [dataSource]="dataSource" MatSort>
   
       <ng-container matColumnDef="destination" >
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> code distributeur </th>
+        <th mat-header-cell class="centered-header-cell" *matHeaderCellDef mat-sort-header> Code distributeur </th>
         <td mat-cell *matCellDef="let vpd"> {{vpd.destination}} </td>
       </ng-container>
 
       <ng-container matColumnDef="adresse" >
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> adresse </th>
+        <th mat-header-cell class="centered-header-cell" *matHeaderCellDef mat-sort-header> Adresse </th>
         <td mat-cell *matCellDef="let vpd"> {{vpd.adresse}} </td>
       </ng-container>
 
       <ng-container matColumnDef="nom_dist" >
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> nom distributeur</th>
+        <th mat-header-cell class="centered-header-cell" *matHeaderCellDef mat-sort-header> Nom distributeur</th>
         <td mat-cell *matCellDef="let vpd"> {{vpd.nom_dist}} </td>
       </ng-container>
 
       <ng-container matColumnDef="nom_produit">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header > nom produit </th>
+        <th mat-header-cell class="centered-header-cell" *matHeaderCellDef mat-sort-header > Nom produit </th>
         <td mat-cell *matCellDef="let vpd"> {{vpd.nom_produit}} </td>
       </ng-container>
   
       <ng-container matColumnDef="cod_prod">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> code produit </th>
+        <th mat-header-cell class="centered-header-cell" *matHeaderCellDef mat-sort-header> Code produit </th>
         <td mat-cell *matCellDef="let vpd"> {{vpd.cod_prod}} </td>
       </ng-container>
   
       <ng-container matColumnDef="last_delivary_date">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> derniere date de livraison </th>
+        <th mat-header-cell class="centered-header-cell" *matHeaderCellDef mat-sort-header> Dernière date de livraison </th>
         <td mat-cell *matCellDef="let vpd"> {{vpd.last_delivary_date}} </td>
       </ng-container>
 
       <ng-container matColumnDef="last_sell_date">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> derniere date de vente </th>
+        <th mat-header-cell class="centered-header-cell" *matHeaderCellDef mat-sort-header> Dernière date de vente </th>
         <td mat-cell *matCellDef="let vpd"> {{vpd.last_sell_date}} </td>
       </ng-container>
 
       <ng-container matColumnDef="derniere_qte_livree">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> derniere quantité livrée </th>
+        <th mat-header-cell class="centered-header-cell" *matHeaderCellDef mat-sort-header> Dernière quantité livrée </th>
         <td mat-cell *matCellDef="let vpd"> {{vpd.derniere_qte_livree}} </td>
       </ng-container>
 

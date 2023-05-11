@@ -1,34 +1,45 @@
 .flex-container {
-    display: flex;
-    flex-direction:column;
-  }
-  input.date{margin: 15px;}
-.flex-container-row{
-    margin-top: 50px;
-    margin-left: 800px;
-    margin-bottom: 10px;
-    display: flex;
-  flex-direction: row; 
-  }
-.flex-container-rows{
-    margin-top: 10px;
-    margin-left: 100px;
-    display: flex;
-    flex-direction: row; 
-  }
-.flex-item-left {
-    margin-left: 10px;
-    flex: 50%;
-  }
-.flex-item-right {
-    margin-left: 200px;
-    flex: 50%;
-  }
-  @media (max-width: 800px) {
-    .flex-item-right, .flex-item-left {
-      flex: 100%;
-    }
+  display: flex;
+  flex-direction: column;
 }
+
+input.date {
+  margin: 15px;
+}
+
+.flex-container-row {
+  margin-top: 50px;
+  margin-left: 800px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-container-rows {
+  margin-top: 10px;
+  margin-left: 100px;
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-item-left {
+  margin-left: 10px;
+  flex: 50%;
+}
+
+.flex-item-right {
+  margin-left: 200px;
+  flex: 50%;
+}
+
+@media (max-width: 800px) {
+
+  .flex-item-right,
+  .flex-item-left {
+    flex: 100%;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -37,28 +48,34 @@
   float: left;
   width: 50%;
   padding: 20px;
-   /* Should be removed. Only for demonstration */
+  /* Should be removed. Only for demonstration */
 }
+
 .row:after {
   content: "";
   display: table;
   clear: both;
- 
-}
-.row{
-  padding-left: 100px;
- 
+
 }
 
+.row {
+  padding-left: 100px;
+  flex-direction: row;
+  display: flex;
+
+
+}
+
+
 .button-44 {
-  margin-left :30%;
+  margin-left: 30%;
   background: red;
   border-radius: 11px;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
   display: flex;
-  font-family: Mija,-apple-system,BlinkMacSystemFont,Roboto,"Roboto Slab","Droid Serif","Segoe UI",system-ui,Arial,sans-serif;
+  font-family: Mija, -apple-system, BlinkMacSystemFont, Roboto, "Roboto Slab", "Droid Serif", "Segoe UI", system-ui, Arial, sans-serif;
   font-size: 1.15em;
   font-weight: 700;
   justify-content: center;
@@ -92,7 +109,19 @@
 }
 
 
-#fermer-butt{
-  color:white;
+#fermer-butt {
+  color: white;
   background-color: red;
+}
+
+.thead-dark {
+  text-align: center;
+  padding: 20px;
+
+}
+
+td {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
 }

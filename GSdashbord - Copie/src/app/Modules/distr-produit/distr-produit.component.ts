@@ -1,13 +1,12 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { DashboardService } from '../dashboard.service';
-import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Chart, ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label, SingleDataSet } from 'ng2-charts';
 import { DatePipe } from '@angular/common';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { Model1 } from 'src/app/interfaces/model-1';
-
 @Component({
   selector: 'app-distr-produit',
   templateUrl: './distr-produit.component.html',
@@ -18,6 +17,7 @@ export class DistrProduitComponent implements OnInit {
   myControlprod = new FormControl('');
   filteredprods: Observable<string[]> | undefined;
   filteredsource: Observable<string[]> | undefined;
+
   public lineChartOptions: ChartOptions = {
     responsive: true,
     legend: {
@@ -25,14 +25,70 @@ export class DistrProduitComponent implements OnInit {
 
     },
 
+    scales: {
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Mois'
+        },
+        gridLines: {
+          display: true,
+          color: 'rgba(0, 0, 0, 0.1)'
+        },
+        ticks: {
+          fontColor: 'rgba(0, 0, 0, 0.8)'
+        }
+      }],
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Quantité'
+        },
+        gridLines: {
+          display: true,
+          color: 'rgba(0, 0, 0, 0.1)'
+        },
+        ticks: {
+          beginAtZero: true,
+          fontColor: 'rgba(0, 0, 0, 0.8)'
+        }
+      }]
+    },
+    tooltips: {
+      enabled: true,
+      mode: 'index',
+      intersect: false
+    },
+    animation: {
+      duration: 2500,
+      easing: 'linear'
+    },
+    elements: {
+      line: {
+        tension: 0.4,
+        borderColor: 'rgba(0, 0, 0, 0.5)',
+        borderWidth: 2
+      },
+      point: {
+        radius: 5,
+        backgroundColor: 'white',
+        borderColor: 'rgba(0, 0, 0, 0.5)',
+        borderWidth: 2,
+        hoverRadius: 8,
+      }
+
+    }
+
+
 
   };
+
   lineChartDataReady = true;
   public lineChartLabels: Label[] = [];
   public lineChartData: SingleDataSet = [];
   public lineChartType: ChartType = 'line';
   public lineChartColor: Color[] = [
-    { backgroundColor: ['#FF0000', '#ffbf3a', '#4e3dc8', '#CD09F8', '#33B67C'] },
+    { backgroundColor: ['#ffbf3a', '#4e3dc8', '#CD09F8', '#33B67C'] },
   ];
 
   constructor(private dashboardService: DashboardService, private datePipe: DatePipe) { }
@@ -41,24 +97,12 @@ export class DistrProduitComponent implements OnInit {
   source: string[] = [];
   proddes: string[] = [];
   ngOnInit(): void {
+
     console.log(this.dateaarret);
     console.log(this.datedepart);
 
 
 
-    let response = this.dashboardService.distributionTotal("PORTABLE OPPO A55 (4+128G)", "BEN", this.datedepart, this.dateaarret).subscribe(
-      (d) => {
-
-        d.forEach((typeCountbar: Model1) => {
-          this.lineChartData.push(typeCountbar.count);
-
-          this.lineChartLabels.push(typeCountbar.libelle);
-        });
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
 
     let responseprod = this.dashboardService.proddes();
     responseprod.subscribe((data) => this.proddes = data);
@@ -74,6 +118,7 @@ export class DistrProduitComponent implements OnInit {
       map(value => this._filter(value || '')),
     );
   }
+
   private _filterr(value: string): string[] {
     const filterValue = value.toLowerCase();
 

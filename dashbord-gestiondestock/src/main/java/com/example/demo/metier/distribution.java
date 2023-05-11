@@ -128,14 +128,12 @@ public class distribution {
 		 return resultList ; 
 	    }
 	  public List<Object> distributionTotal(String prod,String source,String date1, String date2 ) throws ParseException {
-		
+		// inserer ben comme source et Oppo a96 comme produit pour tester l'affichage
 		  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		  Date convertedCurrentDate = sdf.parse(date1);
 		  Date convertedCurrentDate2 = sdf.parse(date2);
 		
-		  System.out.print( convertedCurrentDate2);
 		  List<Object[]> result =disRep.distributiontotal(prod ,source,convertedCurrentDate,convertedCurrentDate2);
-		  System.out.print(result);
 
 		  List<Object> resultList = result.stream()
 			    .map(x -> {
@@ -152,7 +150,6 @@ public class distribution {
 			        return data;
 			    })
 			    .collect(Collectors.toList());
-		  System.out.print(resultList);
 		  return resultList ;
 
 		

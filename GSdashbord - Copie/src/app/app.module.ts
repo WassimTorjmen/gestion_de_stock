@@ -38,6 +38,8 @@ import { LoginComponent } from './Modules/Auth_Security/login/login.component';
 import { AdminBoardComponent } from './Modules/Auth_Security/admin-board/admin-board.component';
 import { RegisterComponent } from './Modules/Auth_Security/register/register.component';
 import { InterceptorService } from './Modules/Auth_Security/_helpers/interceptor.service';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 const modules = [
 
   MatFormFieldModule,
@@ -85,6 +87,8 @@ const modules = [
     MatTableModule,
     HttpClientModule,
     ChartsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 
 
   ],

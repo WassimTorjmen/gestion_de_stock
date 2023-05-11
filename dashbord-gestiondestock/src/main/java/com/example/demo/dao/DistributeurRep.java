@@ -71,7 +71,7 @@ public interface DistributeurRep  extends JpaRepository<Distributeur,String>{
 		List<Object[]>qtemax ();
 
 		/*quantité minimale des produits par boutique*/
-		@Query(value ="select count(k.cod_prod), p.des_prod , d.nom_dist  from kit_pack k , distributeur d , produit p  where  d.cd_dist=k.cod_dist and p.cod_prod = k.cod_prod  group by  d.nom_dist ,p.des_prod  having count(k.cod_prod)< 2", nativeQuery = true)
+		@Query(value ="select count(k.cod_prod), p.des_prod , d.nom_dist  from kit_pack k , distributeur d , produit p  where  d.cd_dist=k.cod_dist and p.cod_prod = k.cod_prod  group by  d.nom_dist ,p.des_prod  having count(k.cod_prod)<= 2 order by(count(k.cod_prod))", nativeQuery = true)
 		List<Object[]>qtemin();
 
 		/***taux de distribution des produits selon boutique **/

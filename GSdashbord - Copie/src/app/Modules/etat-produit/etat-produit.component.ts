@@ -28,14 +28,37 @@ export class EtatProduitComponent implements OnInit {
   proddes: string[] = [];
   source: any;
   summaryboardJson: any;
-  public barChartOptions: ChartOptions = {
+  public barChartOptions = {
+    scales: {
+
+      xAxes: [{
+
+        scaleLabel: {
+          display: true,
+          labelString: 'Etat(s)',
+        }
+      }],
+      yAxes: [{
+        type: 'linear',
+        ticks: {
+          beginAtZero: true,
+          stepSize: 1
+        },
+
+        scaleLabel: {
+          display: true,
+          labelString: 'Quantité'
+        }
+      }]
+    },
+
 
     responsive: true,
     legend: {
       display: false,
 
     },
-    cutoutPercentage: 80,
+    cutout: 20,
   };
   public barChartLabels: Label[] = [];
   public barChartData: SingleDataSet = [];

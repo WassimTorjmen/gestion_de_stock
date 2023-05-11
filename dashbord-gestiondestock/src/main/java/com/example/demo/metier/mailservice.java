@@ -35,7 +35,6 @@ public class mailservice {
 			    .map(x -> {
 
 			    	produithorsstock data= new  produithorsstock();
-			
 			        data.nom_dist=x[0].toString(); 
 			        data.des_prod=x[1].toString(); 
 

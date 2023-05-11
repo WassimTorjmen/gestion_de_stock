@@ -1,21 +1,4 @@
-<div fxLayoutGap="5px">
 
-    <div >
-        <div class="flex-container-row">
-            <div class="flex-item-right">
-                <label>DATE DEPART : </label>
-                <input type="date"  value="2022-02-02" #datedepart>
-            </div>
-           <div class="flex-item-left" >
-            <label>DATE ARRET : </label>
-                <input type="date"    value="2022-08-02" #datearret>
-            </div>
-        </div>
-        
-    </div>
-    
-
-</div>
 <div class="row">
     <div class="column" >
         <app-produit-par-region></app-produit-par-region>
@@ -24,8 +7,7 @@
         <app-etat-produit></app-etat-produit>
     </div>
     
-
-</div>
+    </div>
 <div class="row">
     <div class="column" >
         <app-topboutique-enstock></app-topboutique-enstock>
@@ -35,6 +17,26 @@
     </div>
 
 </div>
+<div fxLayoutGap="5px">
+
+    <div >
+        <div class="flex-container-row">
+            <div class="flex-item-right">
+                
+                <label>DATE DEPART : </label>
+                <input type="date"  value="2023-02-27" #datedepart >
+            </div>
+           <div class="flex-item-left" >
+            <label>DATE ARRET : </label>
+                <input type="date"    value="2023-03-01" #datearret>
+            </div>
+        </div>
+        
+    </div>
+    
+
+</div>
+
 <div class="row">
     <div class="column" >
         <app-distr-produit [datedepart]="datedepart.value" [dateaarret]="datearret.value"></app-distr-produit>
@@ -45,6 +47,7 @@
 </div>
 <div class="row">
     <div class="column" >
+        
         <button class="button-44" (click)="openTempDialogMax()">Quantité maximale</button>
 
         <ng-template #dialogRef let-mydata>
@@ -71,7 +74,7 @@
             </table>
         </mat-dialog-content>
 
-          <button id="fermer-butt"mat-button mat-dialog-close="I am from dialog land...">Fermer</button>
+          <button id="fermer-butt"mat-button >Fermer</button>
         </div>
         </ng-template>
     </div>
@@ -97,10 +100,11 @@
               
             </tbody>
             </table>
-          <button id="fermer-butt" mat-button mat-dialog-close="I am from dialog land...">Fermer</button>
+          <button id="fermer-butt" mat-button >Fermer</button>
         </ng-template>
     </div>
 </div>
+
 <div class="row">
     <div class="column" >
         <app-vente-pardist></app-vente-pardist>
