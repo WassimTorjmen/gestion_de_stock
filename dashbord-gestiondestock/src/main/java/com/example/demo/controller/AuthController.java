@@ -1,4 +1,5 @@
 package com.example.demo.controller;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -7,6 +8,7 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import com.example.demo.model.payloads.response.MessageResponse;
+import com.example.demo.security.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
@@ -47,6 +49,8 @@ public class AuthController {
 
     @Autowired
     JwtUtils jwtUtils;
+    @Autowired
+    UserDetailsServiceImpl userServ;
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -83,20 +87,16 @@ public class AuthController {
         // Create new user's account
         User user = new User(signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
-                encoder.encode(signUpRequest.getPassword()));
+                encoder.encode(signUpRequest.getPassword()),signUpRequest.getRegion(),signUpRequest.getTel());
+
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
 
 
-                    Role agentRole = roleRepository.findByName(ERole.ROLE_AGENT)
-                            .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                    roles.add(agentRole);
-
-
-
-
-
+        Role agentRole = roleRepository.findByName(ERole.ROLE_AGENT)
+                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+        roles.add(agentRole);
         user.setRoles(roles);
         userRepository.save(user);
 
@@ -115,5 +115,19 @@ public class AuthController {
     public String readCookie(@CookieValue(name = "${GestionStock.app.jwtCookieName}") String jwtCookie) {
         return  jwtCookie.toString();
     }
-
+    @GetMapping("/getAllUsers")
+    @ResponseBody
+    public  List<User> getAllUser(){
+        return userServ.findAll();
+    }
+    @PutMapping("/editUser/{id}")
+    public User updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
+        updatedUser.setId(id);
+        return userServ.updateUser(updatedUser);
+    }
+    @DeleteMapping("/deleteUser/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id){
+        userServ.deleteUser(id);
+        return ResponseEntity.ok().build();
+    }
 }

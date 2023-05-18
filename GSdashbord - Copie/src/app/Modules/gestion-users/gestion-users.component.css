@@ -1,0 +1,34 @@
+.users-table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    /* Full width of the viewport */
+    margin-top: 30px;
+}
+
+/* Table styles */
+table.mat-table {
+    width: 100%;
+    /* Make the table take the full width of its container */
+    max-width: 1000px;
+    /* Adjust this value to set a maximum width for the table */
+    margin: 0 auto;
+    /* Center the table horizontally */
+    text-align: center;
+
+}
+
+/* Table header styles */
+.mat-header-row {
+    background-color: #f20909;
+    /* Adjust the color to your preference */
+    color: white;
+
+}
+
+.mat-header-cell {
+    color: white;
+    text-align: center;
+
+}

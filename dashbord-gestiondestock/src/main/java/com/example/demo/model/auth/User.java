@@ -1,5 +1,7 @@
 package com.example.demo.model.auth;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -25,10 +27,17 @@ public class User {
     @Size(max = 50)
     @Email
     private String email;
-
+    @JsonIgnore
     @NotBlank
     @Size(max = 120)
     private String password;
+
+    @NotBlank
+    @Size(max = 50)
+    private String region;
+    private Integer tel;
+
+
 
     @ManyToMany(fetch = FetchType.LAZY)
 
@@ -41,10 +50,12 @@ public class User {
     public User() {
     }
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String password, String region,Integer tel) {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.region=region;
+        this.tel=tel;
     }
 
     public Long getId() {
@@ -87,4 +98,19 @@ public class User {
         this.roles = roles;
     }
 
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public Integer getTel() {
+        return tel;
+    }
+
+    public void setTel(Integer tel) {
+        this.tel = tel;
+    }
 }

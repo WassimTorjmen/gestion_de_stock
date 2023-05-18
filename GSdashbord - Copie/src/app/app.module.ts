@@ -40,6 +40,10 @@ import { RegisterComponent } from './Modules/Auth_Security/register/register.com
 import { InterceptorService } from './Modules/Auth_Security/_helpers/interceptor.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { GestionUsersComponent } from './Modules/gestion-users/gestion-users.component';
+import { EditUserDialogComponent } from './Modules/gestion-users/edit-user-dialog/edit-user-dialog.component';
+import { ConfirmDeleteComponent } from './Modules/gestion-users/confirm-delete/confirm-delete.component';
+import { AgentBoardComponent } from './Modules/Auth_Security/agent-board/agent-board.component';
 const modules = [
 
   MatFormFieldModule,
@@ -67,8 +71,11 @@ const modules = [
     LoginComponent,
     AdminBoardComponent,
     RegisterComponent,
-
-
+    GestionUsersComponent,
+    EditUserDialogComponent,
+    ConfirmDeleteComponent,
+    AdminBoardComponent,
+    AgentBoardComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +95,8 @@ const modules = [
     HttpClientModule,
     ChartsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDialogModule
 
 
   ],

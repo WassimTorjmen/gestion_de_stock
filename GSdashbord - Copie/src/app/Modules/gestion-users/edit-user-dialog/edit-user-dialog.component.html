@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Modifier Utilisateur</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="data.username">
+
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="data.email">
+</mat-form-field>
+<mat-form-field>
+    <mat-label>tel</mat-label>
+    <input matInput [(ngModel)]="data.tel">
+</mat-form-field>
+
+<mat-form-field>      
+      <mat-label>region</mat-label>
+    <input matInput [(ngModel)]="data.region">
+
+</mat-form-field>
+
+  <!-- Add other fields as necessary -->
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+</div>
