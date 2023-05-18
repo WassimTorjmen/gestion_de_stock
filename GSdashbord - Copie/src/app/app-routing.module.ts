@@ -6,6 +6,7 @@ import { DistrProduitComponent } from './Modules/distr-produit/distr-produit.com
 import { LoginComponent } from './Modules/Auth_Security/login/login.component';
 import { AdminBoardComponent } from './Modules/Auth_Security/admin-board/admin-board.component';
 import { RegisterComponent } from './Modules/Auth_Security/register/register.component';
+import { AgentBoardComponent } from './Modules/Auth_Security/agent-board/agent-board.component';
 const routes: Routes = [{
   path: 'dash',
   component: DashbordchartsComponent
@@ -31,6 +32,10 @@ const routes: Routes = [{
 {
   path: 'admin',
   component: AdminBoardComponent
+},
+{
+  path: 'agent',
+  component: AgentBoardComponent
 },
 ];
 
