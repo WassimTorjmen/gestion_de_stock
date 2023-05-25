@@ -188,9 +188,6 @@ public class distribution {
 			    .collect(Collectors.toList());
 		  System.out.print(resultList);
 		  return resultList ;
-
-		
-		 
 	    }
 	  
 // send mail daily hors stock 

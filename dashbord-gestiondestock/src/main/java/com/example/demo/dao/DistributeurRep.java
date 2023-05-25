@@ -52,7 +52,7 @@ public interface DistributeurRep  extends JpaRepository<Distributeur,String>{
 	List<Object[]> distribution ();
 	//	List<Object[]> distribution (@Param("prodes") String prod , @Param("source") String source);
 
-	/***dist total par date***/
+	/***dist total par source,produit et par date***/
 		@Query(value = "select sum (CAST (qte_prod AS INTEGER))  ,   DATE_PART( 'month', dat_crea) as monthy from livraison_en_cours l , distributeur d where l.destination=d.cd_dist and cod_prod=(select cod_prod  from produit where des_prod=:prodes) and l.source=:source and l.dat_crea >=:date1   and l.dat_crea<=:date2 group by monthy order by monthy asc ", nativeQuery = true)
 		List<Object[]> distributiontotal  (@Param("prodes") String prodes , @Param("source") String source, @Param("date1") Date date1, @Param("date2") Date date2);
 
