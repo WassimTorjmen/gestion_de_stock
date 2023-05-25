@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -18,7 +20,7 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
   cookie: String | undefined;
-  constructor(private authService: AuthService, private storageService: StorageService) { }
+  constructor(private authService: AuthService, private storageService: StorageService, private router: Router) { }
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
 
     }
   }
+
 
   onSubmit(): void {
     const { username, password } = this.form;
@@ -43,6 +46,7 @@ export class LoginComponent implements OnInit {
         this.roles = this.storageService.getUser().roles;
 
         this.reloadPage();
+        this.router.navigate(['/'])
       },
       error: err => {
         this.errorMessage = err.error.message;

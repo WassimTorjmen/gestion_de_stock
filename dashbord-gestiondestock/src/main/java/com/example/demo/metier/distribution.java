@@ -206,7 +206,7 @@ public class distribution {
 		       MimeMessage mimeMessage = emailSender.createMimeMessage();
 		        MimeMessageHelper mimeMessageHelper
 		                = new MimeMessageHelper(mimeMessage, true);
-		        mimeMessageHelper.setFrom("torjmane521@gmail.com");
+		        mimeMessageHelper.setFrom("GDS.mailServiceSender@gmail.com");
 		        mimeMessageHelper.setTo("torjmen.wassim@gmail.com");
 		        mimeMessageHelper.setText("ci-joint vous trouvez la liste des produits qui sont en répture de stock par boutique ");
 		        mimeMessageHelper.setSubject("Produit en répture de stock ");
