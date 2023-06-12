@@ -36,7 +36,7 @@ export class AppComponent {
       next: res => {
         console.log(res);
         this.storageService.clean();
-
+        localStorage.clear();
         window.location.reload();
       },
       error: err => {

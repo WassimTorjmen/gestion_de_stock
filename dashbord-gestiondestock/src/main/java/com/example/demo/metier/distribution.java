@@ -195,8 +195,8 @@ public class distribution {
 	    private JavaMailSender mailSender;
 	  @Autowired
 	    private Configuration configuration;
-	  @Scheduled(cron = "0 011 16 * * ?")
-
+	  @Scheduled(cron = "0 011 16 * * ?") 
+	  //@Scheduled(cron = "0 */5 * ? * *") for testing every minutes
 	  public String mailsender() throws MessagingException, JRException, IOException, TemplateException {
 	
 		     mails.exportmail();
@@ -207,10 +207,10 @@ public class distribution {
 		        mimeMessageHelper.setTo("torjmen.wassim@gmail.com");
 		        mimeMessageHelper.setText("ci-joint vous trouvez la liste des produits qui sont en répture de stock par boutique ");
 		        mimeMessageHelper.setSubject("Produit en répture de stock ");
-		        //FileSystemResource fileSystem
-		                //= new FileSystemResource(new File(""));
-		        //mimeMessageHelper.addAttachment(fileSystem.getFilename(),
-		                //fileSystem);
+		        FileSystemResource fileSystem
+		                = new FileSystemResource(new File("email.pdf"));
+		        mimeMessageHelper.addAttachment(fileSystem.getFilename(),
+		                fileSystem);
 		 
 		        emailSender.send(mimeMessage);
 		       

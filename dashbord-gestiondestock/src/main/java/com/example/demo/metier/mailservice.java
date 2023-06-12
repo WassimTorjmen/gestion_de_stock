@@ -49,7 +49,7 @@ public class mailservice {
 		  Map<String,Object> parameters = new HashMap<>(); 
 		  parameters.put("created  by ", "M");
 		  JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,parameters,dataSource);
-		  JasperExportManager.exportReportToPdfFile(jasperPrint,path+"\\email.pdf");
+		  JasperExportManager.exportReportToPdfFile(jasperPrint,"email.pdf");
 	
 		
 	}

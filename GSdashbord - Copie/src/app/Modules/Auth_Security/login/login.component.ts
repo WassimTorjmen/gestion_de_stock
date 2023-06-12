@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       this.isLoggedIn = true;
       this.roles = this.storageService.getUser().roles;
       this.authService.getToken().subscribe((data) => {
-        this.cookie = data;
+        localStorage.setItem('access_token', data.toString())
       })
 
     }

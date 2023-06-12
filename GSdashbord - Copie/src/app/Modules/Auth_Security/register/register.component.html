@@ -68,10 +68,11 @@
           [ngClass]="{ 'is-invalid': f.submitted && tel.errors }"
         />
         <div class="invalid-feedback" *ngIf="tel.errors && f.submitted">
-          <div *ngIf="tel.errors['required']">Username is required</div>
-          <div *ngIf="tel.errors['minlength']['maxlength']">
+          <div *ngIf="tel.errors['required']">numéro de téléphone obligatoire</div>
+          <div *ngIf="tel.errors['minlength']">
             Téléphone doit etre composé de 8 chiffres
           </div>
+          <div *ngIf="tel.errors['maxlength']">Téléphone doit etre composé de 8 chiffres</div>
         </div>
       </div>
       <div class="form-group">
@@ -89,6 +90,12 @@
         />
         <div class="invalid-feedback" *ngIf="region.errors && f.submitted">
           <div *ngIf="region.errors['required']">Region est obligatoire</div>
+          <div *ngIf="region.errors['minlength']">
+            taille de region ne doit pas etre inferieure de 3 caracteres
+          </div>
+          <div *ngIf="region.errors['maxlength']">
+            taille de region ne doit pas depasser 20 caracteres
+          </div>
         </div>
       </div>
       <div class="form-group">
@@ -120,7 +127,7 @@
     </form>
 
     <div class="alert alert-success" *ngIf="isSuccessful">
-      Your registration is successful!
+      Votre inscription est réussie!
     </div>
   </div>
 </div>

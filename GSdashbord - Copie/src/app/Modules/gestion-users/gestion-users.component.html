@@ -2,10 +2,7 @@
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- Colonne ID -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let user">{{ user.id }}</td>
-    </ng-container>
+    
     <ng-container matColumnDef="username">
         <th mat-header-cell *matHeaderCellDef>username</th>
         <td mat-cell *matCellDef="let user">{{ user.username }}</td>

@@ -11,7 +11,7 @@ import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.componen
   styleUrls: ['./gestion-users.component.css']
 })
 export class GestionUsersComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'username', 'email', 'tel', 'region', 'actions'];
+  displayedColumns: string[] = [ 'username', 'email', 'tel', 'region', 'actions'];
   dataSource: User[] = [];
 
   constructor(private authService: AuthService, public dialog: MatDialog) { }
@@ -21,6 +21,7 @@ export class GestionUsersComponent implements OnInit {
       this.dataSource = users;
     })
   }
+  
   openDialog(user: User): void {
     const dialogRef = this.dialog.open(EditUserDialogComponent, {
       width: '300px',
